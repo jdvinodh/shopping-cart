@@ -1,0 +1,15 @@
+<header class="bg-primary">
+    <div class="navbar container navbar-dark  shadow-sm">
+            <strong class="navbar-brand">{{'Sitetitle' | translate}}</strong>
+            <div class="search-container">
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="searchTerm"  placeholder="search products">
+                </div>
+                <button class="fas fa-search search-icon" (keydown.enter)="search(searchTerm)" (click)="search(searchTerm)"></button>
+            </div>
+            <button routerLink="cart" class="btn btn-primary">
+                <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+                <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+            </button>
+    </div>
+</header>
