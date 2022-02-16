@@ -32,7 +32,16 @@
 </div>
 
 <ng-template #emptyProduct>
-  <div class="no-product-found">
-    <h2>{{'noProductsFound' | translate}}</h2>
+  <div *ngIf="!errorMsg">
+    <div class="no-product-found">
+      <h2>No Products Found</h2>
+    </div>
   </div>
 </ng-template>
+
+<div class="api-error">
+  <div *ngIf="errorMsg" class="container text-align-center">
+    <p><img src="../../../assets/oops.png" alt="oops" /></p>
+    <p class="text-align-center danger">Unforutunately we are not able to load. Try After sometime.</p>
+  </div>
+</div>

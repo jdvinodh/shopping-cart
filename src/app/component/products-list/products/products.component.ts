@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { ProductsList } from 'src/app/models/models/product.model';
 import { ApiUrls } from 'src/app/service/api-factory/api-urls';
 import { ApiService } from 'src/app/service/api.service';
@@ -14,6 +14,7 @@ import { CartService } from 'src/app/service/cart.service';
 export class ProductsComponent implements OnInit {
   productList$?: Observable<ProductsList[]>;
   page: number = 0;
+  errorMsg: string = '';
   constructor(
     private apiService: ApiService,
     private cartService: CartService
@@ -26,7 +27,12 @@ export class ProductsComponent implements OnInit {
     });
 
     // load the products on load
-    this.productList$ = this.apiService.httpGet(ApiUrls.PRODUCTS).pipe();
+    this.productList$ = this.apiService.httpGet(ApiUrls.PRODUCTS).pipe(
+      catchError((err) => {
+        this.errorMsg = err;
+        return of();
+      })
+    );
   }
 
   // add a product to the cart
