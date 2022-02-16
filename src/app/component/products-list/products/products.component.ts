@@ -13,7 +13,6 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class ProductsComponent implements OnInit {
   productList$?: Observable<ProductsList[]>;
-  errorMsg: string = '';
   page: number = 0;
   constructor(
     private apiService: ApiService,
@@ -27,23 +26,11 @@ export class ProductsComponent implements OnInit {
     });
 
     // load the products on load
-    this.productList$ = this.apiService
-      .httpGet(ApiUrls.PRODUCTS)
-      .pipe(catchError(this.handleError));
+    this.productList$ = this.apiService.httpGet(ApiUrls.PRODUCTS).pipe();
   }
 
   // add a product to the cart
   addtocart(item: ProductsList) {
     this.cartService.addtoCart(item);
-  }
-
-  // handle error
-  handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      this.errorMsg = `Error: ${error.error.message}`;
-    } else {
-      this.errorMsg = `Error: ${error.message}`;
-    }
-    return of([]);
   }
 }

@@ -2,6 +2,24 @@
   border-radius: 3px;
   width: 100%;
 }
+*{
+  box-sizing: border-box;
+}
+header{
+  background: #fff;
+}
+.cart{
+  background: #1DAA9F;
+  i{
+    color: #fff;
+  }
+  .badge{
+    background: #B91B5E;
+  }
+}
+.form-control{
+  border:1px solid #1DAA9F;
+}
 @media only screen and (max-width: 767px) {
   .search-container {
     width: 100%;
@@ -23,10 +41,12 @@
   .search-icon {
     position: absolute;
     z-index: 10;
-    right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: blue;
+    border: 0;
+    background: transparent;
+    color: #1DAA9F;
+    right: 10px;
   }
 }
 .btn .badge {

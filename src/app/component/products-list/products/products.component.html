@@ -1,50 +1,38 @@
 <ng-http-loader></ng-http-loader>
-<div class="container">
-  <div class="row" *ngIf="productList$ | async as productAsync">
-    <div *ngIf="productAsync.length > 0; else emptyProduct">
-      <ng-container
-        *ngFor="
-          let item of productAsync
-            | paginate: { itemsPerPage: 10, currentPage: page }
-        "
-      >
-        <div class="card col-md-3">
+<div class="pagetitle">
+  <div class="container">
+    <h1>Collections</h1>
+  </div>
+</div>
+<div class="container mt30 mb30" *ngIf="productList$ | async as productAsync">
+  <div class="row" *ngIf="productAsync.length > 0; else emptyProduct">
+    <ng-container
+      *ngFor="
+        let item of productAsync
+          | paginate: { itemsPerPage: 10, currentPage: page }
+      "
+    >
+      <div class="col-md-3 mb30">
+        <div class="card">
           <img src="{{ item.defaultImage }}" alt="{{ item.name }}" />
-          <h5
-            style="
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              max-width: 100ch;
-            "
-          >
-            {{ item.name }}
-          </h5>
-          <p
-            style="
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              max-width: 100ch;
-            "
-          >
-            {{ item.description }}
-          </p>
+          <h5>{{ item.name }}</h5>
+          <p class="desc">{{ item.description }}</p>
           <p><strong>Price:</strong> ${{ item.price }}</p>
           <app-button
             (click)="addtocart(item)"
             [label]="'addToCart' | translate"
           ></app-button>
         </div>
-      </ng-container>
-
+      </div>
+    </ng-container>
+    <div class="row mt30 pagination">
       <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>
   </div>
 </div>
+
 <ng-template #emptyProduct>
-  <div *ngIf="!errorMsg">Hello User, Login</div>
+  <div class="no-product-found">
+    <h2>{{'noProductsFound' | translate}}</h2>
+  </div>
 </ng-template>
-<div *ngIf="errorMsg" class="alert alert-danger">
-  <strong>Error!</strong> unforutunately we are not able to load
-</div>

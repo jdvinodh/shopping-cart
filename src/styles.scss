@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+.addtocart-btn{
+    background-color: #077e74 !important;
+    color: #fff;
+    &:hover{
+        color: #fff;
+    }
+  }
+  ul.ngx-pagination {
+    width: auto;
+    display: flex;
+    justify-content: center ;
+  }
+  .ngx-pagination .current{
+      background: #1DAA9F !important;
+      border-radius: 3px;
+  }
+  .pagetitle{
+    background: #1DAA9F;
+    padding: 10px 0;
+    width: 100%;
+    color: #fff;
+    border-bottom: 10px solid #ccc;
+    box-shadow: 1px 2px 13px -6px rgba(0,0,0,0.49) inset;
+  -webkit-box-shadow: 1px 2px 13px -6px rgba(0,0,0,0.49) inset;
+  -moz-box-shadow: 1px 2px 13px -6px rgba(0,0,0,0.49) inset;
+    h1{
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+  .mt30{
+    margin-top: 30px;
+  }
+  .mb30{
+    margin-bottom: 30px;
+  }
+  .empty{
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+  }
+  @media only screen and (max-width:600px){
+  .logo{
+      margin-right: 10px;
+      img{
+        width: 70px;
+        height: auto;
+        }
+    }
+    .cart{
+        margin-left: 10px;
+    }
+  }
