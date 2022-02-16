@@ -24,6 +24,7 @@ import { CartModule } from './component/cart-option/cart.module';
     NgxPaginationModule,
     ProductsModule,
     CartModule,
+    FormsModule,
     NgHttpLoaderModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

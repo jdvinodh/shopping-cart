@@ -31,9 +31,10 @@
             {{ item.description }}
           </p>
           <p><strong>Price:</strong> ${{ item.price }}</p>
-          <button class="btn btn-primary add-to-cart" (click)="addtocart(item)">
-            Add to cart
-          </button>
+          <app-button
+            (click)="addtocart(item)"
+            [label]="'addToCart' | translate"
+          ></app-button>
         </div>
       </ng-container>
 

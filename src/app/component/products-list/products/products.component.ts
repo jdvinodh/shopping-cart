@@ -21,12 +21,12 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  // display products on search
+    // display products on search
     this.cartService.search.subscribe((val: ProductsList[]) => {
       this.productList$ = this.cartService.search;
     });
 
-  // load the products on load
+    // load the products on load
     this.productList$ = this.apiService
       .httpGet(ApiUrls.PRODUCTS)
       .pipe(catchError(this.handleError));
