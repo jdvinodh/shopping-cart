@@ -13,6 +13,6 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     NgxPaginationModule,
     NgHttpLoaderModule.forRoot(),
   ],
-  declarations: [ProductsComponent]
+  declarations: [ProductsComponent],
 })
-export class ProductsModule { }
+export class ProductsModule {}

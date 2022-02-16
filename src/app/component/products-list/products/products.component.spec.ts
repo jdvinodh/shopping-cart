@@ -11,15 +11,9 @@ describe('ProductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductsComponent ],
-      providers: [
-        HttpClient,
-        TranslateService,
-        ApiService,
-        HttpHandler
-      ]
-    })
-    .compileComponents();
+      declarations: [ProductsComponent],
+      providers: [HttpClient, TranslateService, ApiService, HttpHandler],
+    }).compileComponents();
   });
 
   beforeEach(() => {

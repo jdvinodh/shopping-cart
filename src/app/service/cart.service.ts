@@ -3,15 +3,14 @@ import { BehaviorSubject } from 'rxjs';
 import { ProductsList } from '../models/models/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
-  public cartItemList: ProductsList[] = []
+  public cartItemList: ProductsList[] = [];
   public productList = new BehaviorSubject<ProductsList[]>([]);
   public search = new BehaviorSubject<ProductsList[]>([]);
 
-  constructor() { }
+  constructor() {}
   getProducts() {
     return this.productList.asObservable();
   }
@@ -29,7 +28,7 @@ export class CartService {
     let grandTotal = 0;
     this.cartItemList.map((totalValue: ProductsList) => {
       grandTotal += totalValue.price;
-    })
+    });
     return grandTotal;
   }
   removeCartItem(product: ProductsList) {
@@ -37,11 +36,11 @@ export class CartService {
       if (product.id === productListing.id) {
         this.cartItemList.splice(index, 1);
       }
-    })
+    });
     this.productList.next(this.cartItemList);
   }
   removeAllCart() {
-    this.cartItemList = []
+    this.cartItemList = [];
     this.productList.next(this.cartItemList);
   }
 }

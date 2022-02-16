@@ -14,10 +14,7 @@ import { ProductsModule } from './component/products-list/product.module';
 import { CartModule } from './component/cart-option/cart.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,14 +29,14 @@ import { CartModule } from './component/cart-option/cart.module';
       loader: {
         provide: TranslateLoader,
         useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

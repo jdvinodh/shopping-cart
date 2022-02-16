@@ -1,6 +1,10 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 import { httpTranslateLoader } from 'src/app/app.module';
 
 import { HeaderComponent } from './header.component';
@@ -12,16 +16,17 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: httpTranslateLoader,
-          deps: [HttpClient]
-        }
-      })],
-      providers: [HttpClient, TranslateService, HttpHandler]
-    })
-      .compileComponents();
+      imports: [
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: httpTranslateLoader,
+            deps: [HttpClient],
+          },
+        }),
+      ],
+      providers: [HttpClient, TranslateService, HttpHandler],
+    }).compileComponents();
   });
 
   beforeEach(() => {

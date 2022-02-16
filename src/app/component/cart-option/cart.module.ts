@@ -6,11 +6,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { CartComponent } from './cart/cart.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CartRoutingModule,
-    NgHttpLoaderModule.forRoot(),
-  ],
-  declarations: [CartComponent]
+  imports: [CommonModule, CartRoutingModule, NgHttpLoaderModule.forRoot()],
+  declarations: [CartComponent],
 })
-export class CartModule { }   
+export class CartModule {}

@@ -1,7 +1,11 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 import { AppComponent } from './app.component';
 import { httpTranslateLoader } from './app.module';
 
@@ -11,19 +15,18 @@ describe('AppComponent', () => {
       // imports: [
       //   RouterTestingModule
       // ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
       imports: [
         RouterTestingModule,
         TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: httpTranslateLoader,
-          deps: [HttpClient]
-        }
-      })],
-      providers: [HttpClient, TranslateService, HttpHandler]
+          loader: {
+            provide: TranslateLoader,
+            useFactory: httpTranslateLoader,
+            deps: [HttpClient],
+          },
+        }),
+      ],
+      providers: [HttpClient, TranslateService, HttpHandler],
     }).compileComponents();
   });
 
@@ -38,5 +41,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('add-to-cart');
   });
-
 });

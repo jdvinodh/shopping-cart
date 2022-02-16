@@ -1,3 +1,3 @@
 export enum ApiUrls {
-    PRODUCTS = 'products'
+  PRODUCTS = 'products',
 }

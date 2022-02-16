@@ -1,28 +1,49 @@
 <ng-http-loader></ng-http-loader>
 <div class="container">
-    <div class="row" *ngIf="productList$|async as productAsync">
-        <div *ngIf="productAsync.length > 0; else emptyProduct">
-            <ng-container *ngFor="let item of productAsync  | paginate: { itemsPerPage: 10, currentPage: page }">
-                <div class="card col-md-3">
-                    <img src="{{item.defaultImage}}" alt="{{item.name}}">
-                    <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
-                        {{item.name}}
-                    </h5>
-                    <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
-                        {{item.description}}</p>
-                    <p><strong>Price:</strong> ${{item.price}}</p>
-                    <button class="btn btn-primary add-to-cart" (click)=addtocart(item)>Add to cart</button>
-                </div>
-            </ng-container>
-
-            <div *ngIf="errorMessage" class="alert alert-danger">
-                <strong>Error!</strong> unforutunately we are not able to load
-            </div>
-            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <div class="row" *ngIf="productList$ | async as productAsync">
+    <div *ngIf="productAsync.length > 0; else emptyProduct">
+      <ng-container
+        *ngFor="
+          let item of productAsync
+            | paginate: { itemsPerPage: 10, currentPage: page }
+        "
+      >
+        <div class="card col-md-3">
+          <img src="{{ item.defaultImage }}" alt="{{ item.name }}" />
+          <h5
+            style="
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              max-width: 100ch;
+            "
+          >
+            {{ item.name }}
+          </h5>
+          <p
+            style="
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              max-width: 100ch;
+            "
+          >
+            {{ item.description }}
+          </p>
+          <p><strong>Price:</strong> ${{ item.price }}</p>
+          <button class="btn btn-primary add-to-cart" (click)="addtocart(item)">
+            Add to cart
+          </button>
         </div>
-    </div>
+      </ng-container>
 
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
 </div>
 <ng-template #emptyProduct>
-    Hello User, Login
+  <div *ngIf="!errorMsg">Hello User, Login</div>
 </ng-template>
+<div *ngIf="errorMsg" class="alert alert-danger">
+  <strong>Error!</strong> unforutunately we are not able to load
+</div>
